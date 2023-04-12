@@ -1,5 +1,6 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "ejs": "^3.1.9",
@@ -7,6 +8,13 @@
     "express-session": "^1.17.3",
     "mongodb": "^5.1.0",
     "mongoose": "^7.0.3",
+=======
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.1",
+>>>>>>> d7941dba4f2dc3da5458baf063c5b279f37889f0
     "node": "^19.8.1"
   }
 }

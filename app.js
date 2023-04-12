@@ -3,12 +3,17 @@ const MongoClient = require('mongodb').MongoClient;
 const mongoose = require("mongoose");
 const app = express();
 const ejs = require('ejs');
+<<<<<<< HEAD
 const bodyParser = require('body-parser')
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const User = require('./models/user');
 const Categorie = require('./models/category');
 const Produit = require('./models/produit');
+=======
+var bodyParser = require('body-parser')
+const User = require('./models/user');
+>>>>>>> d7941dba4f2dc3da5458baf063c5b279f37889f0
 
 
 const bdd = "mongodb://127.0.0.1:27017/ProjetECommerce";
@@ -16,6 +21,7 @@ const bdd = "mongodb://127.0.0.1:27017/ProjetECommerce";
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+<<<<<<< HEAD
 app.use(session({
     secret: 'secret-key',
     resave: false,
@@ -116,3 +122,46 @@ app.post('/connection', function (req, res) {
 app.listen(3000, () => {
     console.log("Le server est demarré sur le port 3000");
 });
+=======
+mongoose
+  .connect(bdd, { useNewUrlParser: true })
+  .then(() => console.log("Connecté a Ma BDD"))
+  .catch((err) => console.log(err));
+
+
+app.get("/inscription", (req, res) => {
+  res.render("inscription");
+});
+
+app.post('/inscription', function(req, res) {
+  const fn = req.body.firstname;
+  const ln = req.body.lastname;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  const newUser = new User({
+    firstname: fn,
+    lastname: ln,
+    email: email,
+    password: password
+  });
+
+  newUser.save()
+    .then(() => {
+      console.log('Enregistremennt réussi');
+      res.redirect('/connection');
+    })
+    .catch((err) => {
+      console.log('Enregistrement impossible', err);
+      res.send("Enregistrement de l'utilisateur impossible");
+    });
+});
+
+app.get("/connection", (req, res) => {
+  res.render("connection");
+});
+
+app.listen(3000, () => {
+  console.log("Le server est demarré sur le port 3000");
+});
+>>>>>>> d7941dba4f2dc3da5458baf063c5b279f37889f0
